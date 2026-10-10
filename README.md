@@ -1,6 +1,2 @@
 - 👋 Hi, I’m @Caveira765
-- 🌱 I’m currently learning programming (Beginner)
-- 💞️ I’m looking to collaborate on anything that i can help
 - 📫 How to reach me: guironcaglio180456@gmail.com
-- 😄 Pronouns: he/him
-- ⚡ Fun fact: I can learn really fast.
