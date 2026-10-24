@@ -1,2 +1,2 @@
-- 👋 Hi, I’m @Caveira765
-- 📫 How to reach me: guironcaglio180456@gmail.com
+-  Hi, I’m @Caveira765
+-  How to reach me: guironcaglio180456@gmail.com
