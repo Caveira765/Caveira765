@@ -18,47 +18,117 @@
       <stop offset="55%" stop-color="#6366F1" stop-opacity="0.05" />
       <stop offset="100%" stop-color="#06090F" stop-opacity="0" />
     </radialGradient>
+
+    <style>
+      /* Smooth typing and cycling animation strictly in SVG CSS for GitHub */
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      .cursor {
+        animation: blink 0.85s infinite;
+      }
+
+      /* Animated 3-phrase typewriter cycle */
+      @keyframes cycleText1 {
+        0%, 28%   { opacity: 1; visibility: visible; }
+        33%, 100% { opacity: 0; visibility: hidden; }
+      }
+      @keyframes cycleText2 {
+        0%, 32%   { opacity: 0; visibility: hidden; }
+        35%, 62%  { opacity: 1; visibility: visible; }
+        66%, 100% { opacity: 0; visibility: hidden; }
+      }
+      @keyframes cycleText3 {
+        0%, 65%   { opacity: 0; visibility: hidden; }
+        69%, 95%  { opacity: 1; visibility: visible; }
+        100%      { opacity: 0; visibility: hidden; }
+      }
+
+      .type-line-1 { animation: cycleText1 10s infinite; }
+      .type-line-2 { animation: cycleText2 10s infinite; }
+      .type-line-3 { animation: cycleText3 10s infinite; }
+
+      /* Pulse animation for the live status indicator */
+      @keyframes pulseGlow {
+        0%, 100% { transform: scale(1); opacity: 0.9; }
+        50% { transform: scale(1.3); opacity: 1; }
+      }
+      .pulse-dot {
+        transform-origin: 15px 14px;
+        animation: pulseGlow 2s ease-in-out infinite;
+      }
+    </style>
   </defs>
 
   <rect width="1200" height="290" rx="12" fill="url(#bg1)" stroke="#21262D" stroke-width="1.5" />
   <rect width="1200" height="290" rx="12" fill="url(#grid1)" />
   <rect width="1200" height="290" rx="12" fill="url(#glow1)" />
 
-  <!-- Top subtle accent line -->
-  <rect x="1" y="1" width="1198" height="2" rx="1" fill="url(#accent1)" opacity="0.75" />
+  <!-- Top accent gradient stroke -->
+  <rect x="1" y="1" width="1198" height="2" rx="1" fill="url(#accent1)" opacity="0.85" />
 
-  <!-- Left Column: Typography -->
-  <g transform="translate(56, 48)">
-    <rect x="0" y="0" width="290" height="28" rx="14" fill="#161B22" stroke="#30363D" stroke-width="1" />
-    <circle cx="15" cy="14" r="4" fill="#3FB950" />
+  <!-- Left Column: Typography & Dynamic Typewriter -->
+  <g transform="translate(56, 46)">
+    <!-- Status Pill -->
+    <rect x="0" y="0" width="300" height="28" rx="14" fill="#161B22" stroke="#30363D" stroke-width="1" />
+    <circle cx="15" cy="14" r="4.5" fill="#3FB950" class="pulse-dot" />
     <text x="28" y="18" fill="#C9D1D9" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" letter-spacing="0.8">SOFTWARE ENGINEER · PARANÁ, BR</text>
 
+    <!-- Main Name -->
     <text x="0" y="78" fill="#F0F6FC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="46" font-weight="800" letter-spacing="-1">Guilherme Roncaglio</text>
 
-    <text x="0" y="114" fill="#8B949E" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" font-weight="400">
-      Full-Stack &amp; Desktop Systems Engineer building native <tspan fill="#E6EDF3" font-weight="600">.NET</tspan> apps,
-    </text>
-    <text x="0" y="138" fill="#8B949E" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" font-weight="400">
-      real-time <tspan fill="#E6EDF3" font-weight="600">TypeScript</tspan> web platforms, and multi-engine <tspan fill="#E6EDF3" font-weight="600">Python</tspan> crawlers.
+    <!-- Dynamic Animated Typewriter Terminal Display -->
+    <g transform="translate(0, 102)">
+      <!-- Console prompt marker -->
+      <text x="0" y="24" fill="#38BDF8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" font-weight="700">&gt;</text>
+
+      <!-- Phrase 1 -->
+      <g class="type-line-1">
+        <text x="18" y="24" fill="#E6EDF3" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="500">
+          Architecting native <tspan fill="#A855F7" font-weight="700">C# (.NET 10 / WPF)</tspan> desktop apps with local SQLite.
+        </text>
+      </g>
+
+      <!-- Phrase 2 -->
+      <g class="type-line-2">
+        <text x="18" y="24" fill="#E6EDF3" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="500">
+          Developing real-time <tspan fill="#38BDF8" font-weight="700">TypeScript PWAs</tspan> &amp; <tspan fill="#34D399" font-weight="700">SignalR WebSockets</tspan>.
+        </text>
+      </g>
+
+      <!-- Phrase 3 -->
+      <g class="type-line-3">
+        <text x="18" y="24" fill="#E6EDF3" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16.5" font-weight="500">
+          Building multi-engine <tspan fill="#FACC15" font-weight="700">Python</tspan> web crawlers &amp; automated data pipelines.
+        </text>
+      </g>
+
+      <!-- Flashing Terminal Cursor -->
+      <rect x="625" y="10" width="8" height="18" rx="1.5" fill="#38BDF8" class="cursor" />
+    </g>
+
+    <text x="0" y="152" fill="#8B949E" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14">
+      Focused on clean architecture, asynchronous systems, and high-performance user experiences.
     </text>
 
     <!-- Domain Pills -->
-    <g transform="translate(0, 164)">
-      <rect x="0" y="0" width="142" height="30" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1" />
-      <text x="71" y="19" text-anchor="middle" fill="#58A6FF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600">C# / .NET 10 / WPF</text>
+    <g transform="translate(0, 172)">
+      <rect x="0" y="0" width="144" height="28" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1" />
+      <text x="72" y="18" text-anchor="middle" fill="#58A6FF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600">C# / .NET 10 / WPF</text>
 
-      <rect x="152" y="0" width="154" height="30" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1" />
-      <text x="229" y="19" text-anchor="middle" fill="#A5D6FF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600">TypeScript / PWA</text>
+      <rect x="154" y="0" width="154" height="28" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1" />
+      <text x="231" y="18" text-anchor="middle" fill="#A5D6FF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600">TypeScript / PWA</text>
 
-      <rect x="316" y="0" width="168" height="30" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1" />
-      <text x="400" y="19" text-anchor="middle" fill="#D2A8FF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600">Python / Playwright</text>
+      <rect x="318" y="0" width="168" height="28" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1" />
+      <text x="402" y="18" text-anchor="middle" fill="#D2A8FF" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600">Python / Playwright</text>
 
-      <rect x="494" y="0" width="138" height="30" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1" />
-      <text x="563" y="19" text-anchor="middle" fill="#7EE787" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600">SQLite / SignalR</text>
+      <rect x="496" y="0" width="140" height="28" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1" />
+      <text x="566" y="18" text-anchor="middle" fill="#7EE787" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600">SQLite / SignalR</text>
     </g>
   </g>
 
-  <!-- Right Column: Architectural Telemetry Panel -->
+  <!-- Right Column: Interactive Code Card -->
   <g transform="translate(760, 36)">
     <rect x="0" y="0" width="388" height="218" rx="10" fill="#0D1117" stroke="#30363D" stroke-width="1.2" />
     <rect x="0" y="0" width="388" height="34" rx="10" fill="#161B22" />
